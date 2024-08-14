@@ -47,10 +47,20 @@ local M = {
 		local servers = {
 			vtsls = {
 				root_dir = require("lspconfig.util").root_pattern(".git"),
+				settings = {
+					vtsls = {
+						experimental = {
+							completion = {
+								enableServerSideFuzzyMatch = true,
+								entriesLimit = 20,
+							},
+						},
+					},
+				},
 			},
 			angularls = {
-				-- root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json", ".git"),
-				root_dir = require("lspconfig.util").root_pattern(".git"),
+				root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json", ".git"),
+				-- root_dir = require("lspconfig.util").root_pattern(".git"),
 				on_init = function(client)
 					client.server_capabilities.renameProvider = false
 				end,

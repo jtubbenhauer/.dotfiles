@@ -13,15 +13,16 @@ M.get_trimmed_cwd = function()
 		return
 	end
 
-	local path = string.gsub(cwd, "oil:///Users/jack", "~")
-	local pboard = io.popen("pbcopy", "w")
-
-	if pboard == nil then
-		return
-	end
-
-	pboard:write(path)
-	pboard:close()
+	local path = string.gsub(cwd, "oil:///home/jack", "~")
+	vim.fn.setreg("+", path)
+	-- local pboard = io.popen("pbcopy", "w")
+	--
+	-- if pboard == nil then
+	-- 	return
+	-- end
+	--
+	-- pboard:write(path)
+	-- pboard:close()
 end
 
 M.shorten_path = function(path)
@@ -48,7 +49,7 @@ M.toggle_diffview_branch = function()
 	else
 		require("fzf-lua").git_branches({
 			actions = {
-				["default"] = function(selected)
+				["enter"] = function(selected)
 					vim.cmd("DiffviewOpen " .. selected[1])
 				end,
 			},
@@ -64,7 +65,7 @@ M.fzf_dirs = function(opts)
 		return fzf_lua.utils.ansi_codes.magenta(x)
 	end
 	opts.actions = {
-		["default"] = function(selected)
+		["enter"] = function(selected)
 			local cwd = vim.fn.getcwd()
 			vim.cmd("Oil " .. cwd .. "/" .. selected[1])
 		end,
@@ -75,7 +76,7 @@ end
 M.fzf_git_changes = function()
 	require("fzf-lua").git_branches({
 		actions = {
-			["default"] = function(selected)
+			["enter"] = function(selected)
 				require("fzf-lua").git_files({
 					cmd = "git diff --name-only " .. selected[1],
 				})
@@ -98,7 +99,7 @@ end
 M.change_git_signs_base = function()
 	require("fzf-lua").git_branches({
 		actions = {
-			["default"] = function(selected)
+			["enter"] = function(selected)
 				local str = selected[1]
 				str = str:gsub("^%s*(.-)%s*$", "%1") -- remove leading and trailing whitespace
 				require("gitsigns").change_base(str)

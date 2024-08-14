@@ -11,13 +11,13 @@ local M = {
 			-- },
 			no_italic = true,
 			-- transparent_background = true,
-			color_overrides = {
-				all = {
-					base = "#14141f",
-					mantle = "#101019",
-					crust = "#0b0b12",
-				},
-			},
+			-- color_overrides = {
+			-- 	all = {
+			-- 		base = "#14141f",
+			-- 		mantle = "#101019",
+			-- 		crust = "#0b0b12",
+			-- 	},
+			-- },
 		})
 		vim.cmd([[colorscheme catppuccin-mocha]])
 	end,
