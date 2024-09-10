@@ -103,6 +103,7 @@ set("n", "gr", ":lua require('fzf-lua').lsp_references()<CR>")
 set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 -- set("n", "gh", ":lua vim.lsp.buf.hover()<CR>")
 
+set("n", "<leader>fm", ":lua require('utils').format_buffer()<CR>")
 vim.keymap.set("n", "<leader>ti", function()
 	-- vim.b[bufnr].inlay_hints_enabled = not vim.b[bufnr].inlay_hints_enabled
 	-- vim.lsp.inlay_hint(bufnr, vim.b[bufnr].inlay_hints_enabled)

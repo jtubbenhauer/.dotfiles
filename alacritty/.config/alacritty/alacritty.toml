@@ -8,6 +8,9 @@ size = 10.5
 
 [font.normal]
 family = "BlexMono Nerd Font"
+style = "Medium"
+# family = "Noto Sans Mono"
+# style = "Medium"
 
 [font.offset]
 x = 0

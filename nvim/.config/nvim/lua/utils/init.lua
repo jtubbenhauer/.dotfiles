@@ -14,15 +14,16 @@ M.get_trimmed_cwd = function()
 	end
 
 	local path = string.gsub(cwd, "oil:///home/jack", "~")
-	vim.fn.setreg("+", path)
+	local pboard = io.popen("xclip -selection clipboard", "w")
+	-- local path = string.gsub(cwd, "oil:///home/jack", "~")
 	-- local pboard = io.popen("pbcopy", "w")
 	--
-	-- if pboard == nil then
-	-- 	return
-	-- end
-	--
-	-- pboard:write(path)
-	-- pboard:close()
+	if pboard == nil then
+		return
+	end
+
+	pboard:write(path)
+	pboard:close()
 end
 
 M.shorten_path = function(path)
@@ -134,6 +135,10 @@ end
 
 M.copilot_chat_toggle = function()
 	chat.toggle()
+end
+
+M.format_buffer = function()
+	require("conform").format()
 end
 
 return M

@@ -58,6 +58,9 @@ local M = {
 					},
 				},
 			},
+			eslint = {
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html" },
+			},
 			angularls = {
 				root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json", ".git"),
 				-- root_dir = require("lspconfig.util").root_pattern(".git"),
