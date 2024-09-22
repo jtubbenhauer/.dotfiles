@@ -48,13 +48,14 @@ M.toggle_diffview_branch = function()
 	if view then
 		vim.cmd.DiffviewClose()
 	else
-		require("fzf-lua").git_branches({
-			actions = {
-				["enter"] = function(selected)
-					vim.cmd("DiffviewOpen " .. selected[1])
-				end,
-			},
-		})
+		vim.cmd("DiffviewOpen origin/HEAD")
+		-- require("fzf-lua").git_branches({
+		-- 	actions = {
+		-- 		["enter"] = function(selected)
+		-- 			vim.cmd("DiffviewOpen " .. selected[1])
+		-- 		end,
+		-- 	},
+		-- })
 	end
 end
 
@@ -75,15 +76,18 @@ M.fzf_dirs = function(opts)
 end
 
 M.fzf_git_changes = function()
-	require("fzf-lua").git_branches({
-		actions = {
-			["enter"] = function(selected)
-				require("fzf-lua").git_files({
-					cmd = "git diff --name-only " .. selected[1],
-				})
-			end,
-		},
+	require("fzf-lua").git_files({
+		cmd = "git diff --name-only origin/HEAD",
 	})
+	-- require("fzf-lua").git_branches({
+	-- 	actions = {
+	-- 		["enter"] = function(selected)
+	-- 			require("fzf-lua").git_files({
+	-- 				cmd = "git diff --name-only " .. selected[1],
+	-- 			})
+	-- 		end,
+	-- 	},
+	-- })
 end
 
 M.grep_directory = function()

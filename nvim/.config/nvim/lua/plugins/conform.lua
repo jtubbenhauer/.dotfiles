@@ -20,6 +20,7 @@ local M = {
 				yaml = { "prettierd" },
 				yml = { "prettierd" },
 				cs = { "csharpier" },
+				rust = { "rustfmt" },
 			},
 			notify_on_error = false,
 			format_on_save = {
